@@ -46,25 +46,35 @@ let toastCounter = 0;
 async function fetchPortState(
   events: ScenarioEvent[],
   customVessels: Vessel[],
+  retries = 3,
 ): Promise<PortStatePayload> {
-  const API = import.meta.env.VITE_API_URL || "";
-  const res = await fetch(`${API}/api/port-state`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      events,
-      closed_berths: [],
-      custom_vessels: customVessels.map((v) => ({
-        vessel_id: v.vessel_id,
-        type: v.type,
-        cargo: v.cargo,
-        eta_hours: v.eta_hours,
-        priority: v.priority,
-      })),
-    }),
-  });
-  if (!res.ok) throw new Error(`Port state request failed: ${res.status}`);
-  return res.json() as Promise<PortStatePayload>;
+  const API = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
+  let lastError: Error | null = null;
+  for (let attempt = 0; attempt < retries; attempt++) {
+    try {
+      const res = await fetch(`${API}/api/port-state`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          events,
+          closed_berths: [],
+          custom_vessels: customVessels.map((v) => ({
+            vessel_id: v.vessel_id,
+            type: v.type,
+            cargo: v.cargo,
+            eta_hours: v.eta_hours,
+            priority: v.priority,
+          })),
+        }),
+      });
+      if (!res.ok) throw new Error(`Port state request failed: ${res.status}`);
+      return res.json() as Promise<PortStatePayload>;
+    } catch (err) {
+      lastError = err instanceof Error ? err : new Error(String(err));
+      if (attempt < retries - 1) await new Promise((r) => setTimeout(r, 1000 * (attempt + 1)));
+    }
+  }
+  throw lastError ?? new Error("Failed to fetch port state after retries");
 }
 
 export function AppLayout({
@@ -98,6 +108,8 @@ export function AppLayout({
     queryKey: ["port-state", JSON.stringify(events), JSON.stringify(customVessels)],
     queryFn: () => fetchPortState(events, customVessels),
     staleTime: 60_000,
+    retry: 3,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 10000),
   });
 
   // Push fetched data into context so pages can access it
