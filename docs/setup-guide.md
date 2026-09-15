@@ -1,5 +1,18 @@
 # Setup Guide — PortPredict AI
 
+## Live Deployment
+
+The application is deployed and accessible at:
+
+**Production URL:** https://bob-ai-hackathon-intellicore-seven.vercel.app/
+
+- **Frontend:** Vercel (https://bob-ai-hackathon-intellicore-seven.vercel.app/)
+- **Backend API:** Render (https://portpredict-api.onrender.com)
+
+No local setup is required to use the deployed version.
+
+## Local Development Setup
+
 ## Prerequisites
 
 | Tool | Version | Purpose |
@@ -123,3 +136,26 @@ The system tries Ollama first, falls back to WatsonX automatically.
 | AI returns "not configured" | Either start Ollama (`ollama serve`) or set WatsonX credentials in .env |
 | Simulation shows empty | Add vessels via CSV import or manual entry in Controls tab |
 | Berth closure doesn't divert | Ensure the berth closure event is applied (click Apply in Configure Berths) |
+
+## Production Deployment
+
+### Vercel (Frontend)
+
+Environment variables in Vercel dashboard:
+```
+VITE_API_URL=https://portpredict-api.onrender.com
+```
+
+### Render (Backend)
+
+Environment variables in Render dashboard:
+```
+WATSONX_APIKEY=<your-watsonx-api-key>
+WATSONX_PROJECT_ID=<your-watsonx-project-id>
+WATSONX_URL=https://eu-de.ml.cloud.ibm.com
+WATSONX_API_VERSION=2024-05-31
+WATSONX_MODEL_ID=ibm/granite-4-h-small
+OLLAMA_URL=http://localhost:11434
+OLLAMA_MODEL=qwen2.5:3b
+PORT=3001
+```

@@ -89,6 +89,8 @@ cp backend/.env.example backend/.env
 npm run dev
 ```
 
+**Live Deployment:** https://bob-ai-hackathon-intellicore-seven.vercel.app/
+
 **Frontend Dashboard:** http://localhost:5173
 **Backend API Server:** http://localhost:3001
 
@@ -101,7 +103,7 @@ npm run dev
 | Artifact | Link |
 |---|---|
 | Demo Video | [Watch on Google Drive](https://drive.google.com/file/d/1_SeszmGZmT-9oOLbL7D8B1_KeVX7GxhU/view?usp=sharing) |
-| Live Demo | See demo/live-demo-url.txt |
+| Live Demo | [PortPredict AI — Live on Vercel](https://bob-ai-hackathon-intellicore-seven.vercel.app/) |
 | Screenshots | See demo/screenshots/ |
 | Presentation | See presentation/ |
 

@@ -52,6 +52,6 @@ artifacts:
   setup_guide: "docs/setup-guide.md"
   architecture_doc: "docs/architecture.md"
   demo_video: "demo/demo-video-link.txt"
-  live_demo: "demo/live-demo-url.txt"
+  live_demo: "https://bob-ai-hackathon-intellicore-seven.vercel.app/"
   screenshots: "demo/screenshots/"
   presentation: "presentation/"
