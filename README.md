@@ -1,4 +1,4 @@
-# PortPredict AI — Container Congestion Predictor & Port Operations Optimiser
+# PortPredict AI - Container Congestion Predictor & Port Operations Optimiser
 
 > **Predictive container congestion and intelligent berth allocation dashboard for modern port operations teams, solving Problem Statement L1: Logistics & Ports.**
 
@@ -10,7 +10,7 @@
 |---|---|
 | **Team Name** | Intellicore |
 | **Track** | AI |
-| **Team Lead** | Jay Prajapati — jay.190819@gmail.com |
+| **Team Lead** | Jay Prajapati - 23dce101@charusat.edu.in |
 | **Members** | Jay Prajapati, Nency Patel, Aeni Patel, Dishva Vasoya |
 
 ---
@@ -100,7 +100,7 @@ npm run dev
 
 | Artifact | Link |
 |---|---|
-| Demo Video | See demo/demo-video-link.txt |
+| Demo Video | [Watch on Google Drive](https://drive.google.com/file/d/1_SeszmGZmT-9oOLbL7D8B1_KeVX7GxhU/view?usp=sharing) |
 | Live Demo | See demo/live-demo-url.txt |
 | Screenshots | See demo/screenshots/ |
 | Presentation | See presentation/ |

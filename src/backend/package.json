@@ -1,7 +1,6 @@
 {
   "name": "portpredict-ai-backend",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "tsx watch index.ts",
     "build": "esbuild index.ts --bundle --platform=node --packages=external --outfile=index.js",
