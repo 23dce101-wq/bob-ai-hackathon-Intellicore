@@ -1,121 +1,120 @@
-# 🚀 [Your Project Title Here]
+# PortPredict AI — Container Congestion Predictor & Port Operations Optimiser
 
-> ⚠️ **Replace everything in `[ ]` brackets with your actual content before submission.**
+> **Predictive container congestion and intelligent berth allocation dashboard for modern port operations teams, solving Problem Statement L1: Logistics & Ports.**
 
 ---
 
-## 👥 Team
+## Team
 
 | Field | Value |
 |---|---|
-| **Team Name** | [Your Team Name] |
-| **Track** | [AI / DevOps / Sustainability / Open] |
-| **Team Lead** | [Name] — [email@ibm.com] |
-| **Members** | [Name 1], [Name 2], [Name 3] |
+| **Team Name** | Intellicore |
+| **Track** | AI |
+| **Team Lead** | Jay Prajapati — jay.190819@gmail.com |
+| **Members** | Jay Prajapati, Nency Patel, Aeni Patel, Dishva Vasoya |
 
 ---
 
-## 🎯 Problem Statement
+## Problem Statement (L1: Logistics & Ports)
 
-> In 2–3 sentences: What problem does your project solve? Who experiences this problem?
-
-[Describe the real-world problem your project addresses. Be specific about who the user is and what pain point they face.]
+The 2021 LA/Long Beach port backlog had 100+ ships waiting offshore for weeks, costing global supply chains $10B+. Port operators allocate berths, cranes, and yard space across hundreds of vessels manually in spreadsheets. Congestion hotspots are identified reactively — after vessels are already queuing — and alternate routing decisions come too late to help.
 
 ---
 
-## 💡 Solution
+## Solution
 
-> In 2–3 sentences: What did you build? How does it solve the problem above?
-
-[Describe your solution clearly. Explain the core mechanism — what makes it work.]
+Built with **IBM Bob** and **IBM watsonx.ai (IBM Granite 4-H-Small)**, **PortPredict AI** predicts congestion hotspots using vessel schedules and berth capacity data, recommends alternate routing strategies, optimises berth and crane assignments using an explainable heuristic, and generates a streaming 72-hour port operations plan and copilot for shift supervisors. Features a dual AI backend (Ollama local + WatsonX cloud) for resilient inference.
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-- **Feature 1:** [Brief description — e.g., "Real-time anomaly detection using watsonx.ai"]
-- **Feature 2:** [Brief description]
-- **Feature 3:** [Brief description]
-- **Feature 4:** [Optional]
-- **Feature 5:** [Optional]
+- **Explainable 72-Hour Congestion Forecasting:** Computes rolling 6-hour window congestion scores from mathematical arrival rates, service times, and usable crane capacity — with a clear breakdown explaining exactly why bottlenecks occur.
+- **Root-Cause Bottleneck Driver Attribution:** Automatically ranks the top operational causes of terminal delay (e.g., crane outages, overlapping ultra-large container vessels, priority cargo displacement).
+- **Automated Heuristic Berth Reassignment Optimizer:** Evaluates delayed vessels against compatible, earliest-available berths, calculating net waiting hours saved and crane allocation trade-offs with one-click schedule application.
+- **Interactive Maritime Digital Twin & Disruption Simulator:** Real-time visual terminal simulation with timeline scrubbing, vessel/berth inspection drawers, Gantt schedule views, and dynamic scenario injection (berth closures, crane outages, vessel surges, and storms). When a berth closes, affected vessels are automatically diverted to open berths.
+- **Dual AI Backend — IBM watsonx.ai + Ollama:** Streams production-grade 72-hour shift operations plans and answers operational triage questions in real time. WatsonX is primary, Ollama provides local fallback when cloud is unavailable.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Technologies |
 |---|---|
-| **Languages** | [e.g., Python, TypeScript] |
-| **Frameworks** | [e.g., FastAPI, React] |
-| **IBM Technologies** | [e.g., watsonx.ai, IBM Bob, IBM Cloud] |
-| **Databases** | [e.g., PostgreSQL, Redis] |
-| **Other** | [e.g., Docker, GitHub Actions] |
+| **Languages** | TypeScript, JavaScript, HTML5, CSS3 |
+| **Frameworks** | React 19, Vite, React Router, Node.js, Express, Tailwind CSS |
+| **IBM Technologies** | watsonx.ai, IBM Granite 4-H-Small, IBM Bob |
+| **State** | In-Memory Deterministic Port State Engine + localStorage Persistence |
+| **Other** | Radix UI / shadcn/ui, Lucide React, Recharts, Ollama, Concurrently |
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
-├── src/                  # All source code
-├── docs/                 # Written documentation
-│   ├── problem-statement.md
-│   ├── solution-overview.md
-│   ├── architecture.md
-│   └── setup-guide.md
-├── demo/                 # Demo artifacts
-│   ├── screenshots/      # App screenshots
-│   └── demo-video-link.txt  # Link to demo video
-├── presentation/         # Slide deck
-└── submission.yaml       # Structured submission metadata
+├── src/
+│   ├── backend/                  # Node.js + Express API server & AI gateway
+│   │   ├── ai/                   # Unified AI gateway (Ollama + WatsonX fallback)
+│   │   ├── lib/port/             # Single-source-of-truth scheduling & optimization
+│   │   └── routes/               # API routes (port-state, copilot, shift plan)
+│   ├── frontend/                 # React 19 + React Router + Tailwind CSS SPA
+│   │   ├── src/components/port/  # Simulation, Gantt chart, metrics, AI drawers
+│   │   └── src/routes/           # Dashboard, Simulation, Optimisation, Copilot, Controls
+│   ├── .env.example              # Template for environment configuration
+│   └── package.json              # Monorepo runner scripts
+├── docs/                         # Architectural and operational guides
+├── demo/                         # Demo materials and screenshots
+├── presentation/                 # Slide deck
+└── submission.yaml               # Hackathon submission metadata
 ```
 
 ---
 
-## ⚡ How to Run
-
-> **Copy these exact steps from your [`docs/setup-guide.md`](docs/setup-guide.md)**
+## How to Run
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/[your-repo].git
-cd [your-repo]
+# 1. Clone the repository
+git clone https://github.com/23dce101-wq/bob-ai-hackathon-Intellicore.git
+cd bob-ai-hackathon-Intellicore
 
-# 2. Install dependencies
-[your install command here]
+# 2. Navigate to source directory and install all dependencies
+cd src
+npm run install:all
 
-# 3. Configure environment
-cp .env.example .env
-# Edit .env with your values
+# 3. Configure environment variables
+cp backend/.env.example backend/.env
+# Edit backend/.env with your WATSONX_APIKEY and WATSONX_PROJECT_ID
 
-# 4. Run the project
-[your run command here]
+# 4. Start backend and frontend concurrently
+npm run dev
 ```
+
+**Frontend Dashboard:** http://localhost:5173
+**Backend API Server:** http://localhost:3001
+
+> The simulation, scheduling engine, and optimization run out of the box. Configuring watsonx.ai enables the AI copilot and shift planner. Ollama provides a local fallback when WatsonX is unavailable.
 
 ---
 
-## 🖥️ Demo
+## Demo
 
 | Artifact | Link |
 |---|---|
-| 📹 Demo Video | [See demo/demo-video-link.txt](demo/demo-video-link.txt) |
-| 🌐 Live Demo | [See demo/live-demo-url.txt](demo/live-demo-url.txt) |
-| 🖼️ Screenshots | [See demo/screenshots/](demo/screenshots/) |
-| 📊 Presentation | [See presentation/slides.pdf](presentation/) |
+| Demo Video | See demo/demo-video-link.txt |
+| Live Demo | See demo/live-demo-url.txt |
+| Screenshots | See demo/screenshots/ |
+| Presentation | See presentation/ |
 
 ---
 
-## ⚠️ Known Limitations
+## Known Limitations
 
-> Be honest — judges appreciate transparency over overclaiming.
-
-- [Limitation 1: e.g., "Authentication is mocked — not production-ready"]
-- [Limitation 2: e.g., "Only tested on Chrome"]
-- [Limitation 3: e.g., "Feature X is scaffolded but not fully implemented"]
+- **Greedy Heuristic Optimization:** The berth reassignment algorithm uses an explainable greedy earliest-available matching heuristic rather than Mixed-Integer Linear Programming (MILP).
+- **User-Provided Vessel Data:** Vessel data comes from CSV import or manual entry — no live AIS transponder feeds or commercial TOS (Terminal Operating System) integrations.
+- **In-Memory State:** Server-side port state is generated fresh per request; localStorage preserves client-side state (events, custom vessels, berth closures) across page refreshes.
 
 ---
 
-## 🏅 What We're Most Proud Of
+## What We're Most Proud Of
 
-[Tell the judges what part of your submission is strongest and worth paying close attention to.]
-
----
+We are most proud of the tight synergy between deterministic maritime domain logic and IBM watsonx.ai. Rather than using LLMs for generic conversational filler, PortPredict AI feeds the exact mathematical schedule, crane capacity vectors, conflict logs, and scenario deltas into IBM Granite. This ensures zero hallucinations and allows the model to output operational 72-hour shift plans and real-time dispatcher recommendations that port controllers can immediately trust and act upon during severe weather or crane outage emergencies. The dual AI backend (Ollama + WatsonX) ensures the system works both online and offline.

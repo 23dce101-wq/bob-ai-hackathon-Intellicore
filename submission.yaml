@@ -1,69 +1,57 @@
 # =============================================================================
 # HACKATHON SUBMISSION METADATA
 # =============================================================================
-# Instructions:
-#   - Fill in ALL required fields (marked with # REQUIRED)
-#   - Optional fields can be left as empty strings ""
-#   - Do NOT rename this file — the evaluation pipeline reads it by name
-#   - Use double quotes around all string values
-# =============================================================================
 
 team:
-  name: ""                             # REQUIRED — e.g., "Orion Squad"
-  track: ""                            # REQUIRED — one of: AI | DevOps | Sustainability | Open
+  name: "Intellicore"
+  track: "AI"
   lead:
-    name: ""                           # REQUIRED — e.g., "Alice Chen"
-    email: ""                          # REQUIRED — e.g., "alice.chen@ibm.com"
+    name: "Jay Prajapati"
+    email: "jay.190819@gmail.com"
   members:
-    - name: ""                         # REQUIRED — Team member 1
-      email: ""
-    - name: ""                         # Add more members by copying the two lines above
-      email: ""
-    - name: ""
-      email: ""
+    - name: "Jay Prajapati"
+      email: "jay.190819@gmail.com"
+    - name: "Nency Patel"
+      email: "nency.patel@ibm.com"
+    - name: "Aeni Patel"
+      email: "aeni.patel@ibm.com"
+    - name: "Dishva Vasoya"
+      email: "dishva.vasoya@ibm.com"
 
 submission:
-  title: ""                            # REQUIRED — Project display name, e.g., "SmartOps Dashboard"
+  title: "PortPredict AI — Container Congestion Predictor & Port Operations Optimiser"
 
-  problem_statement: >                 # REQUIRED — 1-3 sentences. What problem? Who has it?
-    Replace this text with a concise description of the real-world problem
-    your project addresses and who experiences it.
+  problem_statement: >
+    As demonstrated by the 2021 LA/Long Beach backlog where 100+ vessels waited offshore costing $10B+, port operators manually allocate berths, cranes, and yard space across hundreds of ships in spreadsheets. Congestion hotspots are identified reactively after vessels are already queuing, making alternate routing and reassignment decisions come too late to prevent catastrophic demurrage and supply chain gridlock.
 
-  solution_summary: >                  # REQUIRED — 1-3 sentences. What did you build?
-    Replace this text with a clear description of your solution
-    and how it addresses the problem above.
+  solution_summary: >
+    Built with IBM Bob and watsonx.ai, PortPredict AI predicts port congestion hotspots using vessel schedules and berth capacity data, recommends alternate routing and greedy berth/crane reassignments with real-time hours saved, and autonomously generates a 72-hour operational plan and interactive copilot for shift supervisors. Features a dual AI backend (Ollama local + WatsonX cloud fallback) for resilient AI inference.
 
-  key_features:                        # REQUIRED — List 3 to 5 specific features you implemented
-    - ""                               # e.g., "Real-time pipeline anomaly detection using watsonx.ai"
-    - ""
-    - ""
-    - ""                               # optional 4th
-    - ""                               # optional 5th
+  key_features:
+    - "Explainable 72-hour rolling congestion forecast with ranked root-cause bottleneck attribution"
+    - "Automated greedy berth reassignment optimizer with real-time waiting-hour savings analysis"
+    - "Interactive live maritime terminal digital twin with timeline scrubbing, vessel inspection, and Gantt schedule"
+    - "Interactive scenario disruption engine with real-time berth closure diversion and vessel reassignment"
+    - "Dual AI backend — IBM watsonx.ai streaming operations copilot with Ollama local fallback"
 
   tech_stack:
-    languages: []                      # REQUIRED — e.g., ["Python", "TypeScript"]
-    frameworks: []                     # e.g., ["FastAPI", "React"]
-    ibm_technologies: []               # e.g., ["watsonx.ai", "IBM Bob", "IBM Cloud Functions"]
-    databases: []                      # e.g., ["PostgreSQL", "Redis"]
-    other: []                          # e.g., ["Docker", "GitHub Actions", "Slack API"]
+    languages: ["TypeScript", "JavaScript", "HTML/CSS"]
+    frameworks: ["React 19", "Node.js", "Express", "Vite", "React Router", "Tailwind CSS"]
+    ibm_technologies: ["watsonx.ai", "IBM Granite 4-H-Small", "IBM Bob"]
+    databases: ["In-Memory State Engine", "localStorage Persistence"]
+    other: ["Radix UI", "Lucide React", "Recharts", "Concurrently", "Ollama"]
 
-  what_we_are_most_proud_of: >         # Optional but recommended — guides judges to your best work
-    Replace with what aspect of the submission you consider strongest
-    and want judges to pay special attention to.
+  what_we_are_most_proud_of: >
+    The seamless integration between deterministic, mathematically explainable scheduling logic and IBM watsonx.ai foundation models. Rather than relying on generic AI hallucinations, watsonx.ai ingests the live single-source-of-truth port schedule, ranked congestion drivers, and active disruption scenarios to stream grounded, executive-grade 72-hour operational shift plans and tactical dispatcher guidance. The dual AI backend ensures the system works both online (WatsonX) and offline (Ollama).
 
-  known_limitations: >                 # Optional but recommended — be honest about gaps
-    Replace with any known limitations, incomplete features,
-    or shortcuts taken due to time constraints.
+  known_limitations: >
+    Berth optimization uses a greedy heuristic rather than NP-hard Mixed Integer Linear Programming (MILP). Vessel data is user-provided via CSV import or manual entry — no live AIS transponder feeds or commercial TOS integrations. The in-memory state engine resets on server restart (localStorage preserves client-side state across page refreshes).
 
-# =============================================================================
-# ARTIFACT LOCATIONS
-# These paths are relative to the repo root. Only change if you moved files.
-# =============================================================================
 artifacts:
   source_code: "src/"
   setup_guide: "docs/setup-guide.md"
   architecture_doc: "docs/architecture.md"
-  demo_video: "demo/demo-video-link.txt"   # URL to hosted video (YouTube, Loom, Box)
-  live_demo: "demo/live-demo-url.txt"      # URL to deployed demo (optional)
+  demo_video: "demo/demo-video-link.txt"
+  live_demo: "demo/live-demo-url.txt"
   screenshots: "demo/screenshots/"
   presentation: "presentation/"

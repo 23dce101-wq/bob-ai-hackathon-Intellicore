@@ -1,41 +1,31 @@
-# Solution Overview
+# Solution Overview — PortPredict AI
 
-## What We Built
+## Core Mechanism
 
-[Describe your solution in plain language. Avoid jargon — write as if explaining to a smart colleague unfamiliar with your tech stack.]
+PortPredict AI is a real-time port operations dashboard that combines a deterministic mathematical scheduling engine with IBM watsonx.ai foundation models to predict, visualise, and optimise port congestion.
+
+The system operates on a **single-source-of-truth** principle: one `buildSchedule()` function produces the berth plan, simulation, Gantt chart, congestion scores, metrics, and AI context. No component can drift out of sync.
 
 ## How It Works
 
-[Explain the core mechanism step by step. A numbered list or simple flow works well here.]
+1. **Data Input:** Vessels are added via CSV import or manual entry. Each vessel has a type (Container/Bulk/Tanker), cargo, ETA, and priority. Berth infrastructure (B1-B6) is fixed port configuration.
 
-1. [Step 1: e.g., "User connects their GitHub repository via OAuth"]
-2. [Step 2: e.g., "The system ingests pipeline logs and feeds them to watsonx.ai"]
-3. [Step 3: e.g., "An anomaly score is computed and displayed on the dashboard"]
-4. [Step 4: e.g., "Alerts are sent to Slack when the score exceeds a threshold"]
+2. **Scheduling:** The `buildSchedule()` function assigns vessels to compatible berths using greedy earliest-available matching. It accounts for crane capacity, yard saturation, vessel priority, and berth closures.
 
-## Architecture Diagram
+3. **Congestion Detection:** Rolling 6-hour window analysis computes congestion scores per berth and port-wide, ranking root-cause drivers (crane outages, overlapping arrivals, priority displacement).
 
-> See [`architecture.md`](architecture.md) for the detailed diagram.
+4. **Optimization:** The greedy berth reassignment optimizer evaluates all delayed vessels against alternative compatible berths, calculating net waiting hours saved with one-click application.
 
-[Optionally include a simple ASCII or Mermaid diagram here for quick reference.]
+5. **Simulation:** An interactive maritime digital twin visualizes the 72-hour schedule. Users can scrub the timeline, inject disruptions (berth closures, storms, crane failures), and see real-time vessel diversion.
 
-```
-[User] → [Frontend: React] → [API: FastAPI] → [watsonx.ai] → [Dashboard]
-                                    ↓
-                             [PostgreSQL DB]
-```
+6. **AI Integration:** WatsonX (primary) and Ollama (local fallback) provide streaming AI inference for the operations copilot and 72-hour shift planner, grounded in the actual port state data.
 
 ## Key Design Decisions
 
-| Decision | Rationale |
-|---|---|
-| [e.g., Used watsonx.ai for anomaly detection] | [e.g., Pre-trained models reduced time-to-value vs. building from scratch] |
-| [Decision 2] | [Rationale 2] |
-| [Decision 3] | [Rationale 3] |
+- **Deterministic over stochastic:** Every calculation is reproducible from the same inputs. No randomness means no surprises during demos or evaluations.
+- **Greedy heuristic over MILP:** Explainable and instant. Port operators need to understand *why* a recommendation was made, not just receive an optimal answer they cannot verify.
+- **Dual AI backend:** WatsonX for production-quality cloud inference, Ollama for offline/local resilience. The system gracefully degrades.
 
-## IBM Technologies Used
+## User Experience
 
-[Explain specifically HOW you used each IBM technology — not just that you used it.]
-
-- **[IBM Tech 1, e.g., watsonx.ai]:** [How it was used — e.g., "Used the `ibm/granite-13b-instruct-v2` model via the Python SDK to classify anomaly types from log text."]
-- **[IBM Tech 2]:** [How it was used]
+The dashboard presents five tabs: Dashboard (KPIs + forecast), Simulation (digital twin), Optimisation (one-click reassignment), AI Copilot (natural language Q&A), and Controls (vessel import + berth configuration). Every tab reads from the same underlying schedule, ensuring consistent information across views.
