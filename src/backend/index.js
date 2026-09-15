@@ -24,8 +24,8 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 
 // index.ts
 var import_config = require("dotenv/config");
-var import_express = __toESM(require("express"), 1);
-var import_cors = __toESM(require("cors"), 1);
+var import_express = __toESM(require("express"));
+var import_cors = __toESM(require("cors"));
 
 // lib/port/schedule.ts
 var HORIZON = 72;
