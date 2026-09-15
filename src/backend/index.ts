@@ -8,7 +8,7 @@ import { portStateHandler } from "./routes/port-state.js";
 const app = express();
 const PORT = process.env["PORT"] || 3001;
 
-app.use(cors({ origin: process.env["ALLOWED_ORIGIN"] || "http://localhost:5173" }));
+app.use(cors({ origin: true }));
 app.use(express.json({ limit: "512kb" }));
 
 // AI routes
