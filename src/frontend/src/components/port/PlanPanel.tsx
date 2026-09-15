@@ -15,7 +15,8 @@ export function PlanPanel({ events, customVessels }: { events: ScenarioEvent[]; 
     setError(null);
     setPlan("");
     try {
-      const res = await fetch("/api/ai/plan", {
+      const API = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${API}/api/ai/plan`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

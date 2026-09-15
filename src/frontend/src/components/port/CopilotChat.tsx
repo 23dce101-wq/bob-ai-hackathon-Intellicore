@@ -86,7 +86,8 @@ export function CopilotChat({
     setTurns((t) => [...t, { role: "user", text }, { role: "assistant", text: "" }]);
     setLoading(true);
     try {
-      const res = await fetch("/api/ai/copilot", {
+      const API = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${API}/api/ai/copilot`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
