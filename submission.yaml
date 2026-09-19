@@ -1,0 +1,57 @@
+# =============================================================================
+# HACKATHON SUBMISSION METADATA
+# =============================================================================
+
+team:
+  name: "Intellicore"
+  track: "AI"
+  lead:
+    name: "Jay Prajapati"
+    email: "23dce101@charusat.edu.in"
+  members:
+    - name: "Jay Prajapati"
+      email: "23dce101@charusat.edu.in"
+    - name: "Nency Patel"
+      email: "nency.patel@ibm.com"
+    - name: "Aeni Patel"
+      email: "aeni.patel@ibm.com"
+    - name: "Dishva Vasoya"
+      email: "dishva.vasoya@ibm.com"
+
+submission:
+  title: "PortPredict AI — Container Congestion Predictor & Port Operations Optimiser"
+
+  problem_statement: >
+    As demonstrated by the 2021 LA/Long Beach backlog where 100+ vessels waited offshore costing $10B+, port operators manually allocate berths, cranes, and yard space across hundreds of ships in spreadsheets. Congestion hotspots are identified reactively after vessels are already queuing, making alternate routing and reassignment decisions come too late to prevent catastrophic demurrage and supply chain gridlock.
+
+  solution_summary: >
+    Built with IBM Bob and watsonx.ai, PortPredict AI predicts port congestion hotspots using vessel schedules and berth capacity data, recommends alternate routing and greedy berth/crane reassignments with real-time hours saved, and autonomously generates a 72-hour operational plan and interactive copilot for shift supervisors. Features a dual AI backend (Ollama local + WatsonX cloud fallback) for resilient AI inference.
+
+  key_features:
+    - "Explainable 72-hour rolling congestion forecast with ranked root-cause bottleneck attribution"
+    - "Automated greedy berth reassignment optimizer with real-time waiting-hour savings analysis"
+    - "Interactive live maritime terminal digital twin with timeline scrubbing, vessel inspection, and Gantt schedule"
+    - "Interactive scenario disruption engine with real-time berth closure diversion and vessel reassignment"
+    - "Dual AI backend — IBM watsonx.ai streaming operations copilot with Ollama local fallback"
+
+  tech_stack:
+    languages: ["TypeScript", "JavaScript", "HTML/CSS"]
+    frameworks: ["React 19", "Node.js", "Express", "Vite", "React Router", "Tailwind CSS"]
+    ibm_technologies: ["watsonx.ai", "IBM Granite 4-H-Small", "IBM Bob"]
+    databases: ["In-Memory State Engine", "localStorage Persistence"]
+    other: ["Radix UI", "Lucide React", "Recharts", "Concurrently", "Ollama"]
+
+  what_we_are_most_proud_of: >
+    The seamless integration between deterministic, mathematically explainable scheduling logic and IBM watsonx.ai foundation models. Rather than relying on generic AI hallucinations, watsonx.ai ingests the live single-source-of-truth port schedule, ranked congestion drivers, and active disruption scenarios to stream grounded, executive-grade 72-hour operational shift plans and tactical dispatcher guidance. The dual AI backend ensures the system works both online (WatsonX) and offline (Ollama).
+
+  known_limitations: >
+    Berth optimization uses a greedy heuristic rather than NP-hard Mixed Integer Linear Programming (MILP). Vessel data is user-provided via CSV import or manual entry — no live AIS transponder feeds or commercial TOS integrations. The in-memory state engine resets on server restart (localStorage preserves client-side state across page refreshes).
+
+artifacts:
+  source_code: "src/"
+  setup_guide: "docs/setup-guide.md"
+  architecture_doc: "docs/architecture.md"
+  demo_video: "demo/demo-video-link.txt"
+  live_demo: "https://bob-ai-hackathon-intellicore-seven.vercel.app/"
+  screenshots: "demo/screenshots/"
+  presentation: "presentation/"

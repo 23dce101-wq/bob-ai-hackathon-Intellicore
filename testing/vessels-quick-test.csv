@@ -1,0 +1,11 @@
+vessel_id,type,cargo,eta_hours,priority
+V501,Container,Urgent medical,0,priority
+V502,Bulk,Coal rush,2,standard
+V503,Tanker,Crude emergency,4,priority
+V504,Container,Electronics batch,6,standard
+V505,Bulk,Grain shipment,8,standard
+V506,Tanker,LNG cargo,10,priority
+V507,Container,Auto parts,12,standard
+V508,Bulk,Iron ore,14,standard
+V509,Tanker,Chemicals,16,standard
+V510,Container,Furniture,18,standard

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: portpredict-api
+    runtime: node
+    rootDir: src/backend
+    buildCommand: npm install && npm run build
+    startCommand: node index.js
+    envVars:
+      - key: WATSONX_APIKEY
+        sync: false
+      - key: WATSONX_PROJECT_ID
+        sync: false
+      - key: WATSONX_URL
+        value: https://eu-de.ml.cloud.ibm.com
+      - key: WATSONX_API_VERSION
+        value: "2024-05-31"
