@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState, useCallback } from "react";
+=======
+import { useCallback } from "react";
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
 import { AlertTriangle } from "lucide-react";
 import { usePortState } from "@/lib/port/port-context";
 import { ForecastPanel } from "@/components/port/ForecastPanel";
@@ -9,6 +13,7 @@ import { CraneRebalancePanel } from "@/components/port/CraneRebalancePanel";
 import { ErrorBoundary } from "@/components/port/ErrorBoundary";
 
 export function OptimisationPage() {
+<<<<<<< HEAD
   const { portData: data, isPending, isFetching, error, vessels, applied, setApplied, applyOptimization, addToast } = usePortState();
   const [isApplying, setIsApplying] = useState(false);
 
@@ -22,6 +27,14 @@ export function OptimisationPage() {
       addToast(`Failed to apply optimisation: ${res.error || "Unknown error"}`, "warning");
     }
   }, [applyOptimization, addToast]);
+=======
+  const { portData: data, isPending, isFetching, error, vessels, applied, setApplied, addToast } = usePortState();
+
+  const handleApply = useCallback(() => {
+    setApplied(true);
+    addToast("Optimisation applied — plan updated", "success");
+  }, [setApplied, addToast]);
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
 
   const handleRevert = useCallback(() => {
     setApplied(false);
@@ -83,7 +96,10 @@ export function OptimisationPage() {
             onApply={handleApply}
             onRevert={handleRevert}
             pending={isFetching}
+<<<<<<< HEAD
             isApplying={isApplying}
+=======
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
           />
         </ErrorBoundary>
       </div>

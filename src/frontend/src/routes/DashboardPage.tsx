@@ -13,7 +13,11 @@ import { Pill } from "@/components/port/StatusBadge";
 import type { PortStatePayload } from "@/lib/port/types";
 
 export function DashboardPage() {
+<<<<<<< HEAD
   const { portData: data, isPending, error, vessels, congestion, metrics } = usePortState();
+=======
+  const { portData: data, isPending, error, vessels } = usePortState();
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
   const [selectedVessel, setSelectedVessel] = useState<string | null>(null);
   const [previousCongestion, setPreviousCongestion] = useState<PortStatePayload["congestion"] | undefined>(undefined);
   const [previousMetrics, setPreviousMetrics] = useState<PortStatePayload["metrics"] | undefined>(undefined);
@@ -58,8 +62,13 @@ export function DashboardPage() {
       <ErrorBoundary>
         <KpiStrip
           summary={data.summary}
+<<<<<<< HEAD
           congestion={congestion ?? data.congestion}
           metrics={metrics ?? data.metrics}
+=======
+          congestion={data.congestion}
+          metrics={data.metrics}
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
           {...(previousCongestion ? { previousCongestion } : {})}
           {...(previousMetrics ? { previousMetrics } : {})}
         />

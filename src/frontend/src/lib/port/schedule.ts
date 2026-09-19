@@ -45,7 +45,12 @@ export function compatible(berth: Berth, vessel: Vessel): boolean {
 
 /** More cranes = faster handling; yard congestion slows discharge when yard blocks are saturated (>75% / >85%). */
 export function serviceHours(vessel: Vessel, berth: Berth): number {
+<<<<<<< HEAD
   let hours = vessel.unload_duration_hours;
+=======
+  const cranes = Math.max(1, effectiveCranes(berth));
+  let hours = Math.round(vessel.unload_duration_hours * (3 / cranes));
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
 
   // Yard space congestion constraint: saturated yard blocks slow down RTG shuttles and container stacking
   if (vessel.type === "Container" && berth.yard_saturation_pct) {

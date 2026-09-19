@@ -74,7 +74,11 @@ function alongPath(points: Pt[], t: number): Pt {
   return points[points.length - 1]!;
 }
 
+<<<<<<< HEAD
 function inboundPathToBerth(y: number): Pt[] {
+=======
+function inboundPath(y: number): Pt[] {
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
   return [
     { x: -90, y: 300 },
     { x: 160, y: 300 },
@@ -84,6 +88,7 @@ function inboundPathToBerth(y: number): Pt[] {
   ];
 }
 
+<<<<<<< HEAD
 function inboundPathToWaiting(slot: Pt): Pt[] {
   return [
     { x: -90, y: 300 },
@@ -92,6 +97,8 @@ function inboundPathToWaiting(slot: Pt): Pt[] {
   ];
 }
 
+=======
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
 function departPath(y: number): Pt[] {
   return [
     { x: MOOR_X, y },
@@ -117,15 +124,22 @@ function heading(points: Pt[], t: number): number {
 
 function place(entry: ServiceEntry, vessel: Vessel, hour: number, index: number, y: number): Placed {
   const arrival = entry.arrival;
+<<<<<<< HEAD
   const start = entry.service_start;
   const end = entry.service_end;
   const slot = anchorSlot(index);
   const outPath = departPath(y);
+=======
+  const inPath = inboundPath(y);
+  const outPath = departPath(y);
+  const slot = anchorSlot(index);
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
 
   if (hour < arrival - APPROACH_HOURS) {
     return { vessel, entry, phase: "offscope", point: { x: -200, y: 300 }, angle: 0 };
   }
 
+<<<<<<< HEAD
   // Determine if vessel must wait at anchorage before berth service
   const hasWait = entry.blocked || entry.wait_hours > 0 || (start !== null && start > arrival);
 
@@ -145,34 +159,64 @@ function place(entry: ServiceEntry, vessel: Vessel, hour: number, index: number,
   }
 
   // Stranded: blocked berth or no valid service window
+=======
+  const start = entry.service_start;
+  const end = entry.service_end;
+
+  if (hour < arrival) {
+    const raw = (hour - (arrival - APPROACH_HOURS)) / APPROACH_HOURS;
+    const limit = entry.blocked || (start !== null && start > arrival) ? 0.72 : 1;
+    const t = raw * limit;
+    return { vessel, entry, phase: "inbound", point: alongPath(inPath, t), angle: heading(inPath, t) };
+  }
+
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
   if (entry.blocked || start === null || end === null) {
     return { vessel, entry, phase: "stranded", point: slot, angle: -20 };
   }
 
+<<<<<<< HEAD
   // Waiting at anchorage until service start window begins
+=======
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
   if (hour < start - 1.5) {
     return { vessel, entry, phase: "waiting", point: slot, angle: -8 };
   }
 
+<<<<<<< HEAD
   // Approaching berth from Waiting Area slot (1.5h before service start)
   if (hour < start) {
     const t = Math.max(0, Math.min(1, 1 - (start - hour) / 1.5));
+=======
+  if (hour < start) {
+    const t = 1 - (start - hour) / 1.5;
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
     const target = { x: MOOR_X, y };
     return {
       vessel,
       entry,
       phase: "approaching",
+<<<<<<< HEAD
       point: lerp(slot, target, t),
+=======
+      point: lerp(slot, target, Math.max(0, Math.min(1, t))),
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
       angle: (Math.atan2(target.y - slot.y, target.x - slot.x) * 180) / Math.PI,
     };
   }
 
+<<<<<<< HEAD
   // Berthed & servicing
+=======
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
   if (hour < end) {
     return { vessel, entry, phase: "berthed", point: { x: MOOR_X, y }, angle: 0 };
   }
 
+<<<<<<< HEAD
   // Departing from berth
+=======
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
   if (hour < end + DEPART_HOURS) {
     const t = (hour - end) / DEPART_HOURS;
     return {
@@ -341,6 +385,7 @@ export function PortSimulation({ berths, vessels, yard, events, optimization }: 
   const placed = useMemo(() => {
     const byIndex = new Map<string, number>();
     berths.forEach((berth, index) => byIndex.set(berth.berth_id, index));
+<<<<<<< HEAD
 
     const waitingSlotMap = new Map<string, number>();
     let nextSlot = 0;
@@ -351,14 +396,23 @@ export function PortSimulation({ berths, vessels, yard, events, optimization }: 
         waitingSlotMap.set(entry.vessel_id, nextSlot++);
       }
     });
+=======
+    let queueIndex = 0;
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
 
     return schedule.entries
       .map((entry) => {
         const vessel = vessels.find((item) => item.vessel_id === entry.vessel_id);
         if (!vessel) return null;
         const y = berthY(byIndex.get(entry.berth_id ?? "") ?? 2);
+<<<<<<< HEAD
         const slotIdx = waitingSlotMap.get(entry.vessel_id) ?? 0;
         return place(entry, vessel, hour, slotIdx, y);
+=======
+        const result = place(entry, vessel, hour, queueIndex, y);
+        if (result.phase === "waiting" || result.phase === "stranded") queueIndex += 1;
+        return result;
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
       })
       .filter((item): item is Placed => item !== null && item.phase !== "offscope" && item.phase !== "completed");
   }, [schedule, vessels, berths, hour]);

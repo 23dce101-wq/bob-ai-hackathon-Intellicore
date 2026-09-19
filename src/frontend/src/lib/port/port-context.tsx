@@ -27,7 +27,10 @@ interface PortState {
   }[]) => { success: boolean; added: number; errors: string[] };
   resetEvents: () => void;
   resetAll: () => void;
+<<<<<<< HEAD
   applyOptimization: () => Promise<{ success: boolean; appliedCount: number; message: string; error?: string }>;
+=======
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
   portData: PortStatePayload | null;
   isPending: boolean;
   isFetching: boolean;
@@ -112,6 +115,7 @@ export function PortProvider({ children }: { children: ReactNode }) {
     };
     setCustomVessels((prev) => [...prev, newVessel]);
     setApplied(false);
+<<<<<<< HEAD
 
     // Sync with MongoDB backend
     const API = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
@@ -121,6 +125,8 @@ export function PortProvider({ children }: { children: ReactNode }) {
       body: JSON.stringify(vessel),
     }).catch((err) => console.warn("[MongoDB Sync] Failed to sync vessel creation:", err));
 
+=======
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
     return newVessel;
   }, []);
 
@@ -133,8 +139,11 @@ export function PortProvider({ children }: { children: ReactNode }) {
   }[]) => {
     const errors: string[] = [];
     let added = 0;
+<<<<<<< HEAD
     const toImport: typeof vessels = [];
 
+=======
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
     vessels.forEach((v) => {
       const exists = customVessels.some((cv) => cv.vessel_id === v.vessel_id);
       if (exists) {
@@ -150,6 +159,7 @@ export function PortProvider({ children }: { children: ReactNode }) {
         delay_reason: null,
       };
       setCustomVessels((prev) => [...prev, newVessel]);
+<<<<<<< HEAD
       toImport.push(v);
       added++;
     });
@@ -164,6 +174,11 @@ export function PortProvider({ children }: { children: ReactNode }) {
       }).catch((err) => console.warn("[MongoDB Sync] Failed to sync bulk import:", err));
     }
 
+=======
+      added++;
+    });
+    setApplied(false);
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
     return { success: added > 0, added, errors };
   }, [customVessels]);
 
@@ -179,6 +194,7 @@ export function PortProvider({ children }: { children: ReactNode }) {
     setCustomVessels([]);
     localStorage.removeItem("port-events");
     localStorage.removeItem("port-custom-vessels");
+<<<<<<< HEAD
 
     const API = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
     fetch(`${API}/api/vessels`, {
@@ -222,6 +238,10 @@ export function PortProvider({ children }: { children: ReactNode }) {
     }
   }, [events, customVessels]);
 
+=======
+  }, []);
+
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
   const vessels = useMemo(
     () => (applied && portData ? portData.optimization.vessels_after : portData?.vessels ?? []),
     [applied, portData],
@@ -245,7 +265,10 @@ export function PortProvider({ children }: { children: ReactNode }) {
     importVessels,
     resetEvents,
     resetAll,
+<<<<<<< HEAD
     applyOptimization,
+=======
+>>>>>>> 6e35b3b1bbe3441fb746ac6adec222711d593e38
     portData,
     isPending: queryState.isPending,
     isFetching: queryState.isFetching,
