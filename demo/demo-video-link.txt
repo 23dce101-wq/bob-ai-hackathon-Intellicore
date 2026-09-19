@@ -1,0 +1,10 @@
+https://drive.google.com/file/d/1_SeszmGZmT-9oOLbL7D8B1_KeVX7GxhU/view?usp=sharing
+
+# PortPredict AI — Demo Video Walkthrough
+#
+# Video covers:
+#   1. Dashboard KPI strip & ranked congestion drivers
+#   2. Live 72-hour maritime terminal simulation scrubbing
+#   3. Disruption scenario injection (Berth closure, crane failure, storm)
+#   4. Heuristic berth optimizer: calculating and applying saved waiting hours
+#   5. AI Copilot Q&A and 72-hour shift planner streaming output

@@ -1,0 +1,101 @@
+vessel_id,type,cargo,eta_hours,priority
+V301,Container,Electronics,0,priority
+V302,Container,Apparel,2,standard
+V303,Container,Auto parts,4,standard
+V304,Container,Furniture,6,priority
+V305,Container,Retail goods,8,standard
+V306,Container,Electronics,10,standard
+V307,Container,Machinery,12,priority
+V308,Container,Textiles,14,standard
+V309,Container,Pharmaceuticals,16,standard
+V310,Container,Consumer electronics,18,priority
+V311,Bulk,Grain,0,standard
+V312,Bulk,Iron ore,3,standard
+V313,Bulk,Coal,5,priority
+V314,Bulk,Cement,7,standard
+V315,Bulk,Soybeans,9,standard
+V316,Bulk,Steel coils,11,standard
+V317,Bulk,Fertilizer,13,priority
+V318,Bulk,Lumber,15,standard
+V319,Bulk,Aluminum,17,standard
+V320,Bulk,Copper ore,19,standard
+V321,Tanker,Crude oil,1,standard
+V322,Tanker,LNG,3,priority
+V323,Tanker,Palm oil,5,standard
+V324,Tanker,Chemicals,7,standard
+V325,Tanker,Diesel,9,priority
+V326,Tanker,Gasoline,11,standard
+V327,Tanker,Kerosene,13,standard
+V328,Tanker,Methanol,15,standard
+V329,Tanker,Biofuel,17,standard
+V330,Tanker,Lubricants,19,priority
+V331,Container,Medical supplies,0,priority
+V332,Container,Semiconductors,1,priority
+V333,Bulk,Rubber,2,standard
+V334,Bulk,Sand,4,standard
+V335,Tanker,Vinegar,6,standard
+V336,Container,Toys,8,standard
+V337,Container,Sports equipment,10,standard
+V338,Bulk,Rice,12,standard
+V339,Tanker,Heating oil,14,standard
+V340,Container,Books,16,standard
+V341,Container,Shoes,20,standard
+V342,Bulk,Sugar,22,standard
+V343,Tanker,Aviation fuel,24,priority
+V344,Container,Glassware,26,standard
+V345,Container,Ceramics,28,standard
+V346,Bulk,Salt,30,standard
+V347,Tanker,Coconut oil,32,standard
+V348,Container,Paper,34,standard
+V349,Container,Cardboard,36,standard
+V350,Bulk,Wood chips,38,standard
+V351,Tanker,Soybean oil,40,priority
+V352,Container,Leather goods,42,standard
+V353,Container,Blankets,44,standard
+V354,Bulk,Limestone,46,standard
+V355,Tanker,Resin,48,standard
+V356,Container,Hardware,50,standard
+V357,Container,LED lights,52,standard
+V358,Bulk,Fly ash,54,standard
+V359,Tanker,Wine,56,standard
+V360,Container,Solar panels,58,priority
+V361,Container,Batteries,60,priority
+V362,Bulk,Plywood,62,standard
+V363,Tanker,Olive oil,64,standard
+V364,Container,Clothing,66,standard
+V365,Container,Car parts,68,standard
+V366,Bulk,Fish meal,70,standard
+V367,Tanker,Rubber solution,72,standard
+V368,Container,Chips,25,standard
+V369,Container,Server racks,27,priority
+V370,Bulk,Clay,29,standard
+V371,Tanker,Acetone,31,standard
+V372,Container,Wiring,33,standard
+V373,Container,Pipes,35,standard
+V374,Bulk,Gypsum,37,standard
+V375,Tanker,Glycerin,39,standard
+V376,Container,Valves,41,standard
+V377,Container,Motors,43,priority
+V378,Bulk,Coke,45,standard
+V379,Tanker,Propylene,47,standard
+V380,Container,Printers,49,standard
+V381,Container,Monitors,51,standard
+V382,Bulk,Manganese,53,standard
+V383,Tanker,Ethanol,55,standard
+V384,Container,Cameras,57,standard
+V385,Container,Speakers,59,standard
+V386,Bulk,Iron pellets,61,standard
+V387,Tanker,Butane,63,standard
+V388,Container,Sockets,65,standard
+V389,Container,Switches,67,standard
+V390,Bulk,Zinc ore,69,standard
+V391,Tanker,Phenol,71,standard
+V392,Container,Transformers,15,priority
+V393,Container,Capacitors,17,standard
+V394,Bulk,Quicklime,19,standard
+V395,Tanker,Styrene,21,standard
+V396,Container,Relays,23,standard
+V397,Container,Fuses,25,standard
+V398,Bulk,Titanium slag,27,standard
+V399,Tanker,Xylene,29,standard
+V400,Container,Circuit boards,31,priority
